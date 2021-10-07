@@ -1,11 +1,8 @@
 package com.libraryManagement.student;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.Scanner;
+
 
 public class Student {
 	
@@ -63,46 +60,8 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "StudentId=" + this.studentId + "\n"+" StudentFname=" + this.studentFname+ "\n"+ "StudentLname=" + this.studentLname
-				+ "\n"+ " StudentGender=" + this.studentAge + "\n"+" StudentAge=" + this.studentAge + "\n"+" StudentClass=" + this.studentClass
-				+ "\n"+" StudentBirthDate=" + this.studentBirthDate;
+		return "StudentId : " + this.studentId + "\n"+"Name : " + this.studentFname+  " " + this.studentLname
+				+ "\n"+ "Gender : " + this.studentGender + "\n"+"Age : " + this.studentAge + "\n"+"Class : " + this.studentClass
+				+ "\n"+"BirthDate : " + this.studentBirthDate;
 	}
-	
-	public void addStudent()
-	{
-		Scanner sc=new Scanner(System.in);
-		
-		System.out.println("Enter Students First Name:");
-		this.setStudentFname(sc.next());
-		
-		System.out.println("Enter Students Last Name:");
-		this.setStudentLname(sc.next());
-		
-		System.out.println("Enter Students Class:");
-		this.setStudentClass(sc.next());
-		
-		System.out.println("Enter Students Gender:");
-		this.setStudentGender(sc.next());
-		
-		System.out.println("Enter Students Age:");
-		this.setStudentAge(sc.nextInt());
-		
-		System.out.println("Enter Students Birth Date:");
-		String date=sc.next();
-		Date date1;
-		try {
-			date1 = new SimpleDateFormat("yyyy-mm-dd").parse(date);
-			this.setStudentBirthDate(date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-		} catch (ParseException e) {
-			System.out.println("Invalid Date Formate");
-			e.printStackTrace();
-		}
-		
-		
-		sc.close();
-	}
-	
-	
-	
-
 }
