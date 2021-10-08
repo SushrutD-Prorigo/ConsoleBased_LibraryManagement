@@ -9,6 +9,7 @@ public class Book {
 	private String booktitle;
 	private int bookCount;
 	private int bookPrice;
+	
 	public int getBookId() {
 		return bookId;
 	}
@@ -39,7 +40,6 @@ public class Book {
 	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
-	
 	
 	public void addBook()
 	{

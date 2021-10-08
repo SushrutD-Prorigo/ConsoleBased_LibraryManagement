@@ -15,6 +15,7 @@ public class AddStudentToDatabase extends Student{
 		Student student=new Student();
 		
 		
+		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("Enter Students First Name:");

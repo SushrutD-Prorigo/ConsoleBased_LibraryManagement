@@ -10,6 +10,7 @@ public class AddBookToDatabase extends Book {
 	{
 		Book book=new Book();
 		
+		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter Book Title:");
 		book.setBooktitle(sc.nextLine());
@@ -21,11 +22,11 @@ public class AddBookToDatabase extends Book {
 		book.setBookPrice(sc.nextInt());
 		
 		System.out.println("Copies:");
-		book.setBookCount(sc.nextInt());
-		
+		int cnt=sc.nextInt();
+		book.setBookCount(cnt);
 		
 		try {
-			String str="insert into book(book_name,book_author,book_cost,book_copies) values(?,?,?,?)";
+			String str="insert into book values(default,?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(str);
 			ps.setString(1, book.getBooktitle());
 			ps.setString(2, book.getBookAuthor());
