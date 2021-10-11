@@ -18,35 +18,16 @@ public class AddStudentToDatabase extends Student{
 		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		
-		System.out.println("Enter Students First Name:");
-		student.setStudentFname(sc.next());
-		
-		System.out.println("Enter Students Last Name:");
-		student.setStudentLname(sc.next());
-		
-		System.out.println("Enter Students Class:");
-		student.setStudentClass(sc.next());
-		
-		System.out.println("Enter Students Gender:");
-		student.setStudentGender(sc.next());
+		student.setStudentFname();
+		student.setStudentLname();
+		student.setStudentClass();
+		student.setStudentGender();
 		
 		System.out.println("Enter Students Age:");
 		student.setStudentAge(sc.nextInt());
 		
-		System.out.println("Enter Students Birth Date:");
-		String date=sc.next();
-		Date date1;
-		try {
-			date1 = new SimpleDateFormat("yyyy-mm-dd").parse(date);
-			student.setStudentBirthDate(date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-		
-		} catch (ParseException e) {
-			System.out.println("Invalid Date Formate");
-			e.printStackTrace();
-		}
-		
-		
-		
+		student.setStudentBirthDate();
+	
 		try {
 			String sql="insert into student(student_fname,student_lname,student_class,student_age,student_gender,student_birthdate) values(?,?,?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(sql);

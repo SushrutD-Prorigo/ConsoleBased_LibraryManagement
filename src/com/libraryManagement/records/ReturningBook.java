@@ -35,12 +35,7 @@ public class ReturningBook extends Records {
 			}
 	
 		try {
-			System.out.println("Enter returning date:");
-			String str=sc.next();
-			Date date1;
-			date1=new SimpleDateFormat("yyyy-mm-dd").parse(str);
-			record.setSubmitDate(date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			
+			record.setSubmitDate();			
 			String query3="update record set submit_date=? where record_id=?";
 			PreparedStatement ps=con.prepareStatement(query3);
 			ps.setString(1,record.getSubmitDate().toString());

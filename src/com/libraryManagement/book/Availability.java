@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 
 public class Availability {
 	
-	public static boolean isAvailable(Connection con,int bookID)
+	public static boolean isAvailable(Connection con,int book_id)
 	{
-		String query="select  book_count from book where book_id=?";
+		String query="select book_copies from book where book_id=?";
 		boolean flag=false;
 		try {
 			
 			PreparedStatement ps=con.prepareStatement(query);
-			ps.setInt(1, bookID);
+			ps.setInt(1, book_id);
 			ResultSet rs=ps.executeQuery();
 			int count=0;
 			while(rs.next())

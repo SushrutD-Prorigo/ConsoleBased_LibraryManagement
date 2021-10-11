@@ -1,6 +1,8 @@
 package com.libraryManagement.records;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Records {
 	
@@ -10,6 +12,7 @@ public class Records {
 	private LocalDate issueDate;
 	private LocalDate dueDate;
 	private LocalDate submitDate;
+	Scanner sc=new Scanner(System.in);
 	
 	public int getRecordId() {
 		return recordId;
@@ -47,7 +50,35 @@ public class Records {
 	public void setSubmitDate(LocalDate submitDate) {
 		this.submitDate = submitDate;
 	}
-
 	
+	public void setIssueDate() {
+		System.out.println("Issue Date -:");
+		String date=sc.next();
+		try {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+		this.issueDate=LocalDate.parse(date, formatter);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error...!");
+			System.out.println("Try again");
+			this.setIssueDate();
+		}
+	}
+	
+	public void setSubmitDate() {
+		System.out.println("Return Date -:");
+		String date=sc.next();
+		try {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+		this.submitDate=LocalDate.parse(date, formatter);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error...!");
+			System.out.println("Try again");
+			this.setSubmitDate();
+		}
+	}
 	
 }

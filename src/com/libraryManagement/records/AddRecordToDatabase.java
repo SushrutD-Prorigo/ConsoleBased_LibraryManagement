@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import com.libraryManagement.book.Availability;
 
+
 public class AddRecordToDatabase extends Records {
 	
 	public static void addRecord(Connection con)
@@ -18,26 +19,21 @@ public class AddRecordToDatabase extends Records {
 		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		
-		System.out.println("Enter Student ID :");
-		recordObj.setStudentId(sc.nextInt());
-		
 		System.out.println("Book ID : ");
 		recordObj.setBookId(sc.nextInt());
 		
-		System.out.println("Issue Date : ");
-		String date=sc.next();
-		Date date1;
-		try {
-			date1 = new SimpleDateFormat("yyyy-mm-dd").parse(date);
-			recordObj.setIssueDate(date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			recordObj.setDueDate(recordObj.getIssueDate().plusDays(5));
-		} catch (ParseException e) {
-			System.out.println("Invalid Date Format");
-			e.printStackTrace();
-		}
-		System.out.println("Issue date :"+recordObj.getIssueDate());
+		if(Availability.isAvailable(con, recordObj.getBookId()))
+		{
+			
+		System.out.println("Enter Student ID :");
+		recordObj.setStudentId(sc.nextInt());
+		
+		recordObj.setIssueDate();
+		
 		recordObj.setDueDate(recordObj.getIssueDate().plusDays(5));
+		
 		System.out.println("Due Date : "+recordObj.getDueDate());
+		
 		try {
 			String query="insert into record values(default,?,?,?,?,null,null,null)";
 			PreparedStatement ps=con.prepareStatement(query);
@@ -56,7 +52,9 @@ public class AddRecordToDatabase extends Records {
 			// TODO: handle exception
 			System.out.println("Unable to process....!");
 		}
-		
+		}
+		else
+			System.out.println("Sorry...Book Not Available...");
 	}
 
 }

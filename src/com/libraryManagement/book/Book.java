@@ -41,23 +41,7 @@ public class Book {
 		this.bookPrice = bookPrice;
 	}
 	
-	public void addBook()
-	{
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter Book Title:");
-		this.setBooktitle(sc.nextLine());
-		
-		System.out.println("Author name:");
-		this.setBookAuthor(sc.nextLine());
-		
-		System.out.println("Price:");
-		this.setBookPrice(sc.nextInt());
-		
-		System.out.println("Copies:");
-		this.setBookCount(sc.nextInt());
-		
-		sc.close();
-	}
+	
 	
 	
 }
